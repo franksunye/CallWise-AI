@@ -1,3 +1,8 @@
+---
+layout: default
+title: 商业化策略
+---
+
 # CallWise-AI（销教通）商业化策略
 
 ## 🚀 一、定价模式建议

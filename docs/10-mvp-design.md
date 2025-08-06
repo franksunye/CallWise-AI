@@ -1,3 +1,8 @@
+---
+layout: default
+title: MVP设计文档
+---
+
 # CallWise-AI（销教通）MVP设计文档 v2.0
 
 ## 🎯 产品概述与市场定位

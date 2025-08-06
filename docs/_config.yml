@@ -1,0 +1,35 @@
+title: CallWise-AI（销教通）
+description: AI个人销售教练 - 让每位销售都拥有专属教练
+baseurl: "/CallWise-AI"
+url: "https://franksunye.github.io"
+
+# Jekyll设置
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# 插件
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Kramdown设置
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+
+# 排除文件
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+
+# 默认设置
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
