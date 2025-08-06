@@ -222,10 +222,43 @@
             max-width: 100%;
             height: auto;
             cursor: grab;
+            background: #ffffff !important;
         }
 
         .mermaid svg:active {
             cursor: grabbing;
+        }
+
+        /* 强制设置Mermaid元素的颜色 */
+        .mermaid .node rect,
+        .mermaid .node circle,
+        .mermaid .node ellipse,
+        .mermaid .node polygon {
+            fill: #ffffff !important;
+            stroke: #d1d5da !important;
+            stroke-width: 1px !important;
+        }
+
+        .mermaid .edgeLabel {
+            background-color: #ffffff !important;
+            color: #24292e !important;
+            font-weight: 500 !important;
+        }
+
+        .mermaid .nodeLabel,
+        .mermaid .cluster-label {
+            color: #24292e !important;
+            font-weight: 500 !important;
+        }
+
+        .mermaid .edgePath path {
+            stroke: #586069 !important;
+            stroke-width: 1.5px !important;
+        }
+
+        .mermaid .marker {
+            fill: #586069 !important;
+            stroke: #586069 !important;
         }
         
         .footer {
@@ -293,24 +326,35 @@
         document.addEventListener('DOMContentLoaded', function() {
             mermaid.initialize({
                 startOnLoad: true,
-                theme: 'default',
+                theme: 'base',
                 themeVariables: {
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                    // 确保浅色背景
+                    background: '#ffffff',
+                    primaryColor: '#f9f9f9',
+                    primaryTextColor: '#24292e',
+                    primaryBorderColor: '#d1d5da',
+                    lineColor: '#586069',
+
+                    // 节点样式
+                    mainBkg: '#ffffff',
+                    secondBkg: '#f6f8fa',
+                    tertiaryColor: '#fafbfc',
+
+                    // 文字颜色
+                    textColor: '#24292e',
+                    edgeLabelBackground: '#ffffff',
+
+                    // 其他元素
+                    clusterBkg: '#f6f8fa',
+                    clusterBorder: '#d1d5da'
                 },
                 flowchart: {
                     useMaxWidth: true,
                     htmlLabels: true
                 },
                 // 启用交互功能
-                securityLevel: 'loose',
-                // 启用缩放和平移
-                pan: {
-                    enabled: true
-                },
-                zoom: {
-                    enabled: true,
-                    bindKeys: true
-                }
+                securityLevel: 'loose'
             });
 
             // 手动渲染所有mermaid图表
