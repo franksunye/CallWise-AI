@@ -114,24 +114,61 @@
             border-radius: 10px;
             border: 1px solid #e2e8f0;
             transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
         }
-        
+
         .doc-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-        
+
         .doc-card h4 {
             color: #2d3748;
             margin-bottom: 0.5rem;
             font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        
+
         .doc-card p {
             color: #718096;
             font-size: 0.9rem;
             margin-bottom: 1rem;
         }
+
+        .progress-badge {
+            background: #667eea;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            margin: 0.8rem 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.8s ease-in-out;
+            position: relative;
+        }
+
+        .progress-100 { background: linear-gradient(90deg, #48bb78, #38a169); }
+        .progress-80 { background: linear-gradient(90deg, #4299e1, #3182ce); }
+        .progress-70 { background: linear-gradient(90deg, #ed8936, #dd6b20); }
+        .progress-50 { background: linear-gradient(90deg, #ecc94b, #d69e2e); }
+        .progress-30 { background: linear-gradient(90deg, #f56565, #e53e3e); }
         
         .doc-link {
             display: inline-block;
@@ -202,42 +239,90 @@
                 <h3>📚 项目文档</h3>
                 <div class="docs-grid">
                     <div class="doc-card">
-                        <h4>文档指南</h4>
+                        <h4>
+                            <span>文档指南</span>
+                            <span class="progress-badge">100%</span>
+                        </h4>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar progress-100" style="width: 100%"></div>
+                        </div>
                         <p>文档编码规则、阅读顺序和更新规范</p>
                         <a href="documentation-guide" class="doc-link">查看文档</a>
                     </div>
                     <div class="doc-card">
-                        <h4>机会评估</h4>
+                        <h4>
+                            <span>机会评估</span>
+                            <span class="progress-badge">70%</span>
+                        </h4>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar progress-70" style="width: 70%"></div>
+                        </div>
                         <p>市场分析、竞品对比、风险评估和商业可行性分析</p>
                         <a href="00-opportunity-assessment" class="doc-link">查看文档</a>
                     </div>
                     <div class="doc-card">
-                        <h4>MVP设计</h4>
+                        <h4>
+                            <span>MVP设计</span>
+                            <span class="progress-badge">80%</span>
+                        </h4>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar progress-80" style="width: 80%"></div>
+                        </div>
                         <p>产品愿景、用户画像、功能规划和开发计划</p>
                         <a href="10-mvp-design" class="doc-link">查看文档</a>
                     </div>
                     <div class="doc-card">
-                        <h4>产品Backlog</h4>
+                        <h4>
+                            <span>产品Backlog</span>
+                            <span class="progress-badge">80%</span>
+                        </h4>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar progress-80" style="width: 80%"></div>
+                        </div>
                         <p>用户故事、Sprint规划和功能优先级</p>
                         <a href="11-backlog" class="doc-link">查看文档</a>
                     </div>
                     <div class="doc-card">
-                        <h4>🎨 前端设计</h4>
+                        <h4>
+                            <span>🎨 前端设计</span>
+                            <span class="progress-badge">80%</span>
+                        </h4>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar progress-80" style="width: 80%"></div>
+                        </div>
                         <p>UI/UX设计、交互流程和移动端体验设计</p>
                         <a href="12-frontend-design" class="doc-link">查看文档</a>
                     </div>
                     <div class="doc-card">
-                        <h4>系统架构</h4>
+                        <h4>
+                            <span>系统架构</span>
+                            <span class="progress-badge">50%</span>
+                        </h4>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar progress-50" style="width: 50%"></div>
+                        </div>
                         <p>技术架构设计、组件规划和实现方案</p>
                         <a href="20-architecture" class="doc-link">查看文档</a>
                     </div>
                     <div class="doc-card">
-                        <h4>🚀 AI Native升级规划</h4>
+                        <h4>
+                            <span>🚀 AI Native升级规划</span>
+                            <span class="progress-badge">30%</span>
+                        </h4>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar progress-30" style="width: 30%"></div>
+                        </div>
                         <p>技术升级路线图和投资回报分析</p>
                         <a href="25-ai-native-roadmap" class="doc-link">查看文档</a>
                     </div>
                     <div class="doc-card">
-                        <h4>商业化策略</h4>
+                        <h4>
+                            <span>商业化策略</span>
+                            <span class="progress-badge">30%</span>
+                        </h4>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar progress-30" style="width: 30%"></div>
+                        </div>
                         <p>定价模式、市场推广和用户增长策略</p>
                         <a href="30-business-strategy" class="doc-link">查看文档</a>
                     </div>
@@ -249,5 +334,47 @@
             <p>&copy; 2025 CallWise-AI（销教通）. AI个人销售教练，让每位销售都拥有专属教练。</p>
         </div>
     </div>
+
+    <script>
+        // 页面加载完成后启动进度条动画
+        document.addEventListener('DOMContentLoaded', function() {
+            // 延迟启动动画，让页面先渲染
+            setTimeout(function() {
+                const progressBars = document.querySelectorAll('.progress-bar');
+                progressBars.forEach(function(bar) {
+                    // 先将宽度设为0，然后动画到目标宽度
+                    const targetWidth = bar.style.width;
+                    bar.style.width = '0%';
+
+                    // 使用setTimeout来触发动画
+                    setTimeout(function() {
+                        bar.style.width = targetWidth;
+                    }, 100);
+                });
+            }, 300);
+        });
+
+        // 添加卡片悬停效果增强
+        document.addEventListener('DOMContentLoaded', function() {
+            const docCards = document.querySelectorAll('.doc-card');
+            docCards.forEach(function(card) {
+                card.addEventListener('mouseenter', function() {
+                    const progressBar = card.querySelector('.progress-bar');
+                    if (progressBar) {
+                        progressBar.style.transform = 'scaleY(1.2)';
+                        progressBar.style.filter = 'brightness(1.1)';
+                    }
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    const progressBar = card.querySelector('.progress-bar');
+                    if (progressBar) {
+                        progressBar.style.transform = 'scaleY(1)';
+                        progressBar.style.filter = 'brightness(1)';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
-</html> 
+</html>
