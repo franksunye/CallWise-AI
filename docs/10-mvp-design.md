@@ -114,12 +114,18 @@ graph TD
     F[📚 模块6<br/>行业知识库<br/>专业知识，智能检索] --> B
     F --> C
 
+    G[🎭 模块7<br/>全链路语音对话<br/>AI角色扮演，语音训练] --> H[语音识别 + TTS]
+    G --> I[实时对话分析]
+    H --> B
+    I --> C
+
     style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style B fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
     style C fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
     style D fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style E fill:#fce4ec,stroke:#c2185b,stroke-width:2px
     style F fill:#f1f8e9,stroke:#689f38,stroke-width:2px
+    style G fill:#e1f5fe,stroke:#0277bd,stroke-width:3px
 ```
 
 ### 📋 详细功能规格
@@ -132,6 +138,7 @@ graph TD
 | **4** | **跟进提醒 & 模板** | • 智能话术推荐<br/>• 跟进提醒设置<br/>• 标准化模板<br/>• 时机优化建议 | • 推荐算法<br/>• 定时提醒系统<br/>• 模板库管理<br/>• 用户行为分析 | • 跟进效率提升<br/>• 标准化沟通<br/>• 时机把握优化 | • 模板匹配度≥80%<br/>• 提醒准确性100%<br/>• 模板使用率≥60% |
 | **5** | **简单后台仪表盘** | • 通话分析统计<br/>• 趋势图表展示<br/>• 成功率统计<br/>• 能力评估报告 | • 数据可视化<br/>• 统计分析算法<br/>• 图表生成引擎<br/>• 报表系统 | • 成长可视化<br/>• 激励持续使用<br/>• 能力全面评估 | • 图表加载≤2秒<br/>• 数据准确性100%<br/>• 趋势显示≥4次记录 |
 | **6** | **行业知识库** | • 分层专业知识<br/>• RAG智能检索<br/>• 持续学习优化<br/>• 专业话术模板 | • 向量数据库<br/>• 语义检索算法<br/>• 知识图谱<br/>• 增量学习 | • 专业建议质量<br/>• 行业标准对标<br/>• 话术模板支持 | • 检索准确率≥85%<br/>• 知识覆盖率≥90%<br/>• 用户采纳率≥60% |
+| **7** | **全链路语音对话** | • AI角色扮演对话<br/>• 实时语音交互<br/>• 通义千问TTS合成<br/>• 对话过程分析 | • Whisper语音识别<br/>• GPT-4对话生成<br/>• 通义千问TTS<br/>• 实时流处理 | • 沉浸式训练体验<br/>• 真实场景模拟<br/>• 即时反馈指导 | • 语音延迟≤2秒<br/>• 角色一致性≥90%<br/>• 对话自然度≥4.5/5 |
 
 ### 模块间协作流程
 
@@ -153,12 +160,88 @@ flowchart LR
     style F fill:#f0f4f8
 ```
 
+### 📞 模块7：全链路语音对话训练（新增核心模块）
+
+基于现有"对练"小程序的文字对话基础，升级为全链路语音对话功能：
+
+```mermaid
+graph TD
+    A[全链路语音对话训练] --> B[语音输入处理]
+    A --> C[AI角色扮演引擎]
+    A --> D[语音合成输出]
+    A --> E[实时对话分析]
+
+    B --> F[用户语音识别<br/>Whisper API]
+    B --> G[意图理解<br/>NLP分析]
+
+    C --> H[客户角色模拟<br/>基于场景库]
+    C --> I[动态响应生成<br/>GPT-4对话]
+    C --> J[异议模拟<br/>真实场景还原]
+
+    D --> K[通义千问TTS<br/>语音合成]
+    D --> L[多音色选择<br/>客户角色匹配]
+    D --> M[情感语调控制<br/>场景适配]
+
+    E --> N[实时话术评分]
+    E --> O[异议处理分析]
+    E --> P[改进建议生成]
+
+    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
+    style B fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    style C fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
+    style D fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    style E fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+```
+
+#### 核心功能规格
+
+| 功能组件 | 技术实现 | 用户价值 | 验收标准 |
+|----------|----------|----------|----------|
+| **语音输入处理** | Whisper API + 实时转写 | 自然语音交互体验 | 转写准确率≥95%，延迟≤2秒 |
+| **AI角色扮演** | GPT-4 + 场景知识库 | 真实客户对话模拟 | 角色一致性≥90%，响应相关性≥85% |
+| **通义千问TTS** | 阿里云语音合成API | 自然流畅的AI语音 | 语音自然度≥4.5/5，支持多音色 |
+| **实时分析** | 流式处理 + 即时反馈 | 对话过程中的实时指导 | 分析延迟≤3秒，建议准确率≥80% |
+
+#### 集成通义千问TTS技术方案
+
+**API集成**：
+- **服务地址**：https://dashscope.aliyuncs.com/api/v1/services/audio/tts
+- **支持音色**：多种专业音色，可根据客户角色选择
+- **音频格式**：支持MP3、WAV等多种格式
+- **实时流式**：支持流式语音合成，降低延迟
+
+**技术架构**：
+```javascript
+// 语音合成服务集成示例
+const ttsService = {
+  synthesize: async (text, voiceId, emotion) => {
+    const response = await fetch('https://dashscope.aliyuncs.com/api/v1/services/audio/tts', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: 'qwen-tts-v1',
+        input: { text },
+        parameters: {
+          voice: voiceId,
+          emotion: emotion,
+          speed: 1.0,
+          pitch: 0
+        }
+      })
+    });
+    return response.blob();
+  }
+};
+```
+
 ### 🚀 后期可扩展模块（增值服务）
 
 基于MVP验证成功后，可逐步扩展以下高级功能：
 
 **传统功能扩展**：
-- **模拟对话训练与role-play反馈**：AI虚拟客户角色扮演，练习不同场景下的销售对话
 - **多语言通话支持（视频、电话会议等）**：支持更多沟通渠道和语言
 - **行业benchmark数据对比或优质成交案例库**：与同行业优秀案例对比分析
 - **行业知识库深度扩展**：多行业专业知识体系，智能知识图谱
