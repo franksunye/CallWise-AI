@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CallWise-AI - AI个人销售教练</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: #718096;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature {
+            background: #f7fafc;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .feature h3 {
+            color: #2d3748;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .feature p {
+            color: #718096;
+        }
+        
+        .docs-section {
+            margin-top: 3rem;
+        }
+        
+        .docs-section h3 {
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .doc-card {
+            background: #f7fafc;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .doc-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .doc-card h4 {
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .doc-card p {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .doc-link {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        
+        .doc-link:hover {
+            background: #5a67d8;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>CallWise-AI</h1>
+            <p>AI个人销售教练 - 让每位销售都拥有专属教练</p>
+        </div>
+        
+        <div class="content">
+            <div class="hero">
+                <h2>SoloCoach</h2>
+                <p>通过对录音/通话的即时评分、个性化反馈与趋势追踪，让销售者可以随时复盘、持续成长。</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <h3>🎯 智能评分</h3>
+                    <p>基于AI的Scorecard模型，多维度评估销售对话质量，包括问询、异议处理、成交信号等。</p>
+                </div>
+                <div class="feature">
+                    <h3>🤖 AI教练</h3>
+                    <p>生成个性化、可操作的改进建议，帮助销售者识别盲点，提升沟通技巧。</p>
+                </div>
+                <div class="feature">
+                    <h3>📈 趋势追踪</h3>
+                    <p>可视化展示销售能力进步轨迹，让成长过程清晰可见，增强持续改进动力。</p>
+                </div>
+            </div>
+            
+            <div class="docs-section">
+                <h3>📚 项目文档</h3>
+                <div class="docs-grid">
+                    <div class="doc-card">
+                        <h4>机会评估</h4>
+                        <p>市场分析、竞品对比、风险评估和商业可行性分析</p>
+                        <a href="docs/opportunity-assessment.md" class="doc-link">查看文档</a>
+                    </div>
+                    <div class="doc-card">
+                        <h4>MVP设计</h4>
+                        <p>产品愿景、用户画像、功能规划和开发计划</p>
+                        <a href="docs/mvp-design.md" class="doc-link">查看文档</a>
+                    </div>
+                    <div class="doc-card">
+                        <h4>产品Backlog</h4>
+                        <p>用户故事、Sprint规划和功能优先级</p>
+                        <a href="docs/backlog.md" class="doc-link">查看文档</a>
+                    </div>
+                    <div class="doc-card">
+                        <h4>系统架构</h4>
+                        <p>技术架构、组件设计和非功能需求</p>
+                        <a href="docs/architecture.md" class="doc-link">查看文档</a>
+                    </div>
+                    <div class="doc-card">
+                        <h4>商业化策略</h4>
+                        <p>定价模式、市场推广和用户增长策略</p>
+                        <a href="docs/business-strategy.md" class="doc-link">查看文档</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2025 CallWise-AI. 让AI赋能每一位销售专业人士。</p>
+        </div>
+    </div>
+</body>
+</html> 
