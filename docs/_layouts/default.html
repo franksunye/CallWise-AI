@@ -206,19 +206,7 @@
     </style>
     
     <!-- Mermaid支持 -->
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-    <script>
-        mermaid.initialize({
-            startOnLoad: true,
-            theme: 'default',
-            themeVariables: {
-                primaryColor: '#667eea',
-                primaryTextColor: '#2d3748',
-                primaryBorderColor: '#667eea',
-                lineColor: '#4a5568'
-            }
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
 </head>
 <body>
     <div class="header">
@@ -247,5 +235,43 @@
     <div class="footer">
         <p>&copy; 2025 CallWise-AI（销教通）. 让AI赋能每一位销售专业人士。</p>
     </div>
+
+    <!-- Mermaid初始化 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            mermaid.initialize({
+                startOnLoad: true,
+                theme: 'default',
+                themeVariables: {
+                    primaryColor: '#667eea',
+                    primaryTextColor: '#2d3748',
+                    primaryBorderColor: '#667eea',
+                    lineColor: '#4a5568',
+                    background: '#ffffff',
+                    mainBkg: '#ffffff',
+                    secondBkg: '#f7fafc'
+                },
+                flowchart: {
+                    useMaxWidth: true,
+                    htmlLabels: true
+                }
+            });
+
+            // 手动渲染所有mermaid图表
+            const mermaidElements = document.querySelectorAll('.language-mermaid');
+            mermaidElements.forEach((element, index) => {
+                const graphDefinition = element.textContent;
+                const graphId = 'mermaid-graph-' + index;
+                const graphDiv = document.createElement('div');
+                graphDiv.className = 'mermaid';
+                graphDiv.id = graphId;
+                graphDiv.textContent = graphDefinition;
+                element.parentNode.replaceChild(graphDiv, element);
+            });
+
+            // 重新渲染
+            mermaid.init();
+        });
+    </script>
 </body>
 </html>
