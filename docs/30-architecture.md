@@ -1,4 +1,4 @@
-# CallWise-AI 系统架构
+# CallWise-AI（销教通）系统架构
 
 ## 整体架构
 
