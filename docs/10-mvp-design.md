@@ -102,6 +102,28 @@ flowchart TD
 
 基于目标用户（家庭防水维修个体技师）实际需求，初期MVP应聚焦以下6个核心模块：
 
+### 📋 MVP模块概览
+
+```mermaid
+graph TD
+    A[📞 模块1<br/>通话录音 & 转写<br/>一键录音，智能转写] --> B[🧠 模块2<br/>异议/话术分析<br/>AI分析，专业评分]
+    B --> C[📝 模块3<br/>通话总结建议<br/>智能总结，改进建议]
+    C --> D[⏰ 模块4<br/>跟进提醒 & 模板<br/>智能提醒，标准话术]
+    D --> E[📊 模块5<br/>简单后台仪表盘<br/>数据统计，趋势分析]
+
+    F[📚 模块6<br/>行业知识库<br/>专业知识，智能检索] --> B
+    F --> C
+
+    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    style B fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    style C fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
+    style D fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    style E fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    style F fill:#f1f8e9,stroke:#689f38,stroke-width:2px
+```
+
+### 📋 详细功能规格
+
 | 模块 | 功能名称 | 核心功能 | 技术要求 | 用户价值 | 验收标准 |
 |------|----------|----------|----------|----------|----------|
 | **1** | **通话录音 & 转写** | • 一键录音功能<br/>• 多源录音支持<br/>• 自动语音转文本<br/>• 安全存储管理 | • 中文语音识别≥95%<br/>• 支持方言识别<br/>• 多格式音频支持<br/>• 加密存储 | • 便捷录音操作<br/>• 准确文本转换<br/>• 数据安全保障 | • 转写准确率≥95%<br/>• 录音操作≤3步<br/>• 转写延迟≤30秒 |
