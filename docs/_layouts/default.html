@@ -175,6 +175,57 @@
             text-align: center;
             margin: 2rem 0;
             background: transparent;
+            position: relative;
+            border: 1px solid #e1e5e9;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        /* Mermaid工具栏样式 */
+        .mermaid-toolbar {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #d1d5da;
+            border-radius: 6px;
+            padding: 4px;
+            display: flex;
+            gap: 4px;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .mermaid:hover .mermaid-toolbar {
+            opacity: 1;
+        }
+
+        .mermaid-toolbar button {
+            background: none;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            color: #586069;
+            transition: background-color 0.2s;
+        }
+
+        .mermaid-toolbar button:hover {
+            background-color: #f1f3f4;
+            color: #24292e;
+        }
+
+        /* SVG容器样式 */
+        .mermaid svg {
+            max-width: 100%;
+            height: auto;
+            cursor: grab;
+        }
+
+        .mermaid svg:active {
+            cursor: grabbing;
         }
         
         .footer {
@@ -249,6 +300,16 @@
                 flowchart: {
                     useMaxWidth: true,
                     htmlLabels: true
+                },
+                // 启用交互功能
+                securityLevel: 'loose',
+                // 启用缩放和平移
+                pan: {
+                    enabled: true
+                },
+                zoom: {
+                    enabled: true,
+                    bindKeys: true
                 }
             });
 
@@ -257,16 +318,133 @@
             mermaidElements.forEach((element, index) => {
                 const graphDefinition = element.textContent;
                 const graphId = 'mermaid-graph-' + index;
-                const graphDiv = document.createElement('div');
-                graphDiv.className = 'mermaid';
-                graphDiv.id = graphId;
-                graphDiv.textContent = graphDefinition;
-                element.parentNode.replaceChild(graphDiv, element);
+
+                // 创建容器
+                const container = document.createElement('div');
+                container.className = 'mermaid';
+                container.id = graphId;
+                container.textContent = graphDefinition;
+
+                // 创建工具栏
+                const toolbar = document.createElement('div');
+                toolbar.className = 'mermaid-toolbar';
+                toolbar.innerHTML = `
+                    <button onclick="zoomIn('${graphId}')" title="放大">🔍+</button>
+                    <button onclick="zoomOut('${graphId}')" title="缩小">🔍-</button>
+                    <button onclick="resetZoom('${graphId}')" title="重置">⟲</button>
+                    <button onclick="downloadSVG('${graphId}')" title="下载">💾</button>
+                `;
+
+                element.parentNode.replaceChild(container, element);
+
+                // 渲染后添加工具栏
+                setTimeout(() => {
+                    const renderedContainer = document.getElementById(graphId);
+                    if (renderedContainer && renderedContainer.querySelector('svg')) {
+                        renderedContainer.appendChild(toolbar);
+                        setupZoomPan(graphId);
+                    }
+                }, 100);
             });
 
             // 重新渲染
             mermaid.init();
         });
+
+        // 缩放和平移功能
+        let zoomLevels = {};
+
+        function setupZoomPan(graphId) {
+            const container = document.getElementById(graphId);
+            const svg = container.querySelector('svg');
+            if (!svg) return;
+
+            zoomLevels[graphId] = 1;
+
+            // 添加平移功能
+            let isPanning = false;
+            let startPoint = { x: 0, y: 0 };
+            let currentTransform = { x: 0, y: 0 };
+
+            svg.addEventListener('mousedown', (e) => {
+                isPanning = true;
+                startPoint = { x: e.clientX, y: e.clientY };
+                svg.style.cursor = 'grabbing';
+            });
+
+            svg.addEventListener('mousemove', (e) => {
+                if (!isPanning) return;
+
+                const dx = e.clientX - startPoint.x;
+                const dy = e.clientY - startPoint.y;
+
+                currentTransform.x += dx;
+                currentTransform.y += dy;
+
+                updateTransform(svg, currentTransform, zoomLevels[graphId]);
+
+                startPoint = { x: e.clientX, y: e.clientY };
+            });
+
+            svg.addEventListener('mouseup', () => {
+                isPanning = false;
+                svg.style.cursor = 'grab';
+            });
+
+            svg.addEventListener('mouseleave', () => {
+                isPanning = false;
+                svg.style.cursor = 'grab';
+            });
+        }
+
+        function updateTransform(svg, translate, scale) {
+            svg.style.transform = `translate(${translate.x}px, ${translate.y}px) scale(${scale})`;
+        }
+
+        function zoomIn(graphId) {
+            const container = document.getElementById(graphId);
+            const svg = container.querySelector('svg');
+            if (!svg) return;
+
+            zoomLevels[graphId] = Math.min(zoomLevels[graphId] * 1.2, 3);
+            svg.style.transform = `scale(${zoomLevels[graphId]})`;
+        }
+
+        function zoomOut(graphId) {
+            const container = document.getElementById(graphId);
+            const svg = container.querySelector('svg');
+            if (!svg) return;
+
+            zoomLevels[graphId] = Math.max(zoomLevels[graphId] / 1.2, 0.5);
+            svg.style.transform = `scale(${zoomLevels[graphId]})`;
+        }
+
+        function resetZoom(graphId) {
+            const container = document.getElementById(graphId);
+            const svg = container.querySelector('svg');
+            if (!svg) return;
+
+            zoomLevels[graphId] = 1;
+            svg.style.transform = 'scale(1) translate(0, 0)';
+        }
+
+        function downloadSVG(graphId) {
+            const container = document.getElementById(graphId);
+            const svg = container.querySelector('svg');
+            if (!svg) return;
+
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+            const svgUrl = URL.createObjectURL(svgBlob);
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = svgUrl;
+            downloadLink.download = `mermaid-diagram-${graphId}.svg`;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            URL.revokeObjectURL(svgUrl);
+        }
     </script>
 </body>
 </html>
