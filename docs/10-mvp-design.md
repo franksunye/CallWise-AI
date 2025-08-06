@@ -131,100 +131,9 @@ flowchart LR
 
 ---
 
-## 📐 产品架构与用户路线图（C4模型）
+## 📱 用户界面与交互设计
 
-### C4 Level 1: 系统上下文图
-
-```mermaid
-C4Context
-    title CallWise-AI 系统上下文图
-
-    Person(user, "防水维修技师", "个人销售专业人士")
-    Person(customer, "客户", "需要防水维修服务的用户")
-
-    System(callwise, "CallWise-AI", "个人销售AI教练系统")
-
-    System_Ext(speech_api, "语音识别服务", "Whisper API / 云端语音服务")
-    System_Ext(ai_service, "AI分析服务", "对话分析与建议生成")
-    System_Ext(notification, "通知服务", "跟进提醒推送")
-
-    Rel(user, callwise, "使用", "录音、查看分析、获取建议")
-    Rel(user, customer, "销售沟通", "电话/现场交流")
-    Rel(callwise, speech_api, "调用", "语音转文字")
-    Rel(callwise, ai_service, "调用", "对话分析")
-    Rel(callwise, notification, "调用", "发送提醒")
-```
-
-### C4 Level 2: 容器架构图
-
-```mermaid
-C4Container
-    title CallWise-AI 容器架构图
-
-    Person(user, "防水维修技师")
-
-    Container(mobile_app, "移动应用", "React Native/Flutter", "用户界面与交互")
-    Container(api_gateway, "API网关", "Node.js", "请求路由与认证")
-    Container(speech_service, "语音处理服务", "Python/Node.js", "录音转写与分析")
-    Container(ai_engine, "AI分析引擎", "Python/ML", "对话分析与建议生成")
-    Container(notification_service, "通知服务", "Node.js", "跟进提醒管理")
-
-    ContainerDb(local_db, "本地数据库", "SQLite", "离线数据存储")
-    ContainerDb(cloud_db, "云端数据库", "PostgreSQL", "用户数据同步")
-    ContainerDb(file_storage, "文件存储", "AWS S3/阿里云OSS", "音频文件存储")
-
-    Rel(user, mobile_app, "使用")
-    Rel(mobile_app, api_gateway, "API调用", "HTTPS")
-    Rel(api_gateway, speech_service, "转写请求")
-    Rel(api_gateway, ai_engine, "分析请求")
-    Rel(api_gateway, notification_service, "提醒设置")
-
-    Rel(mobile_app, local_db, "读写", "本地存储")
-    Rel(api_gateway, cloud_db, "读写", "数据同步")
-    Rel(speech_service, file_storage, "存取", "音频文件")
-```
-
-### C4 Level 3: 用户界面组件图
-
-```mermaid
-C4Component
-    title CallWise-AI 用户界面组件架构
-
-    Container_Boundary(mobile_app, "移动应用") {
-        Component(home_screen, "首页组件", "录音界面", "模块1: 录音入口")
-        Component(recording_comp, "录音组件", "录音控制", "一键录音/上传文件")
-        Component(transcription_comp, "转写组件", "文本显示", "语音转文字结果")
-
-        Component(analysis_screen, "分析页面", "结果展示", "模块2: 话术分析")
-        Component(score_comp, "评分组件", "评分卡片", "异议识别/话术评分")
-        Component(insight_comp, "洞察组件", "分析结果", "专业度/说服力分析")
-
-        Component(suggestion_screen, "建议页面", "AI建议", "模块3: 改进建议")
-        Component(summary_comp, "总结组件", "通话总结", "关键信息提取")
-        Component(advice_comp, "建议组件", "改进建议", "个性化指导")
-
-        Component(followup_screen, "跟进页面", "客户管理", "模块4: 跟进提醒")
-        Component(template_comp, "模板组件", "话术库", "标准化模板")
-        Component(reminder_comp, "提醒组件", "跟进提醒", "智能提醒设置")
-
-        Component(dashboard_screen, "仪表盘", "数据统计", "模块5: 趋势分析")
-        Component(chart_comp, "图表组件", "可视化", "趋势图表展示")
-        Component(stats_comp, "统计组件", "数据分析", "成功率统计")
-    }
-
-    Rel(home_screen, recording_comp, "包含")
-    Rel(home_screen, transcription_comp, "导航到")
-    Rel(analysis_screen, score_comp, "包含")
-    Rel(analysis_screen, insight_comp, "包含")
-    Rel(suggestion_screen, summary_comp, "包含")
-    Rel(suggestion_screen, advice_comp, "包含")
-    Rel(followup_screen, template_comp, "包含")
-    Rel(followup_screen, reminder_comp, "包含")
-    Rel(dashboard_screen, chart_comp, "包含")
-    Rel(dashboard_screen, stats_comp, "包含")
-```
-
-### 用户操作流程（基于C4组件）
+### 用户操作流程
 
 ```mermaid
 journey
@@ -251,6 +160,14 @@ journey
       查看趋势: 5: 用户
       对比进步: 5: 用户
 ```
+
+### 界面设计原则
+- **Mobile-first**：界面简洁无负担，操作路径 ≤ 3步
+- **行业化设计**：针对防水维修场景的专业术语和工作流程
+- **直观操作**：使用熟悉设计模式（录音、时间轴、卡片样式）
+- **引导机制**：首次使用引导（录音→分析→反馈→跟进）
+
+> **架构设计详情请参考**: [系统架构文档](./20-architecture.md)
 
 ---
 
