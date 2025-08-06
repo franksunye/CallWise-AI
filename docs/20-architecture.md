@@ -99,9 +99,11 @@ C4Component
         Component(scoring_engine, "评分引擎", "Python/ML", "多维度评分算法")
         Component(suggestion_generator, "建议生成器", "Python/LLM", "个性化建议生成")
         Component(feedback_processor, "反馈处理器", "Python", "用户反馈学习")
+        Component(knowledge_retriever, "知识检索器", "Python/RAG", "行业知识智能检索")
 
         ComponentDb(model_store, "模型存储", "文件系统", "AI模型和权重")
-        ComponentDb(knowledge_base, "知识库", "向量数据库", "行业标准话术")
+        ComponentDb(knowledge_base, "行业知识库", "向量数据库", "分层行业专业知识")
+        ComponentDb(template_store, "话术模板库", "PostgreSQL", "标准化沟通模板")
     }
 
     Container_Ext(file_storage, "文件存储")
@@ -200,6 +202,54 @@ flowchart TD
 | 自然语言处理 | spaCy + transformers | 最新稳定版 |
 | 对话分析 | 自训练BERT模型 | 中文优化 |
 | 建议生成 | GPT-3.5/4 API | 备选本地LLM |
+| 知识检索 | ChromaDB + Sentence-BERT | RAG架构 |
+| 向量化 | text-embedding-ada-002 | OpenAI嵌入模型 |
+
+## 🧠 行业知识库架构
+
+### 知识库分层设计
+
+```mermaid
+graph TD
+    A[行业知识库] --> B[通用销售知识]
+    A --> C[行业专业知识]
+    A --> D[场景化话术]
+
+    B --> E[异议处理标准]
+    B --> F[需求挖掘技巧]
+    B --> G[成交信号识别]
+
+    C --> H[家装材料知识]
+    C --> I[施工流程标准]
+    C --> J[产品技术规格]
+
+    D --> K[报价说明模板]
+    D --> L[方案解释话术]
+    D --> M[跟进沟通模板]
+```
+
+### RAG增强生成流程
+
+```mermaid
+graph LR
+    A[用户对话] --> B[语义理解]
+    B --> C[知识检索]
+    C --> D[上下文增强]
+    D --> E[专业建议生成]
+
+    F[向量知识库] --> C
+    G[用户反馈] --> H[知识更新]
+    H --> F
+```
+
+### 知识库实现策略
+
+| 组件 | 技术选型 | 用途 |
+|------|----------|------|
+| 向量数据库 | ChromaDB | 语义检索 |
+| 检索算法 | 混合检索(语义+关键词) | 提高召回率 |
+| 知识更新 | 增量学习 | 持续优化 |
+| 质量控制 | 专家审核+用户反馈 | 确保准确性 |
 
 ## 🔒 安全与隐私设计
 
