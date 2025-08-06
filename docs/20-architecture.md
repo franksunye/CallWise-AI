@@ -328,29 +328,19 @@ graph TD
 ## 📈 监控与分析
 
 ### 业务指标监控
+
 ```mermaid
-dashboard
-    title CallWise-AI 业务监控仪表盘
+graph TD
+    A[CallWise-AI 业务监控仪表盘] --> B[日活用户: 1250 ↗️]
+    A --> C[录音转写成功率: 96.8% →]
+    A --> D[AI建议接受率: 52.3% ↗️]
+    A --> E[平均响应时间: 18s ↘️]
 
-    metric "日活用户" {
-        value 1250
-        trend up
-    }
-
-    metric "录音转写成功率" {
-        value 96.8%
-        trend stable
-    }
-
-    metric "AI建议接受率" {
-        value 52.3%
-        trend up
-    }
-
-    metric "平均响应时间" {
-        value 18s
-        trend down
-    }
+    style A fill:#e3f2fd
+    style B fill:#e8f5e8
+    style C fill:#fff3e0
+    style D fill:#e8f5e8
+    style E fill:#e8f5e8
 ```
 
 ### 技术指标追踪
