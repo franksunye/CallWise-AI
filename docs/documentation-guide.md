@@ -10,39 +10,39 @@
 
 ### 文档分类
 
-#### 0x - 项目概述和基础信息
+#### 项目概述和基础信息
 - `index.html` - 项目首页
-- `01-documentation-guide.md` - 本文档指南
+- `documentation-guide.md` - 本文档指南（规范文档，不使用编号前缀）
 
-#### 1x - 市场分析和机会评估
-- `10-opportunity-assessment.md` - 机会评估文档
+#### 0x - 市场分析和机会评估
+- `00-opportunity-assessment.md` - 机会评估文档
 
-#### 2x - 产品设计和MVP
-- `20-mvp-design.md` - MVP设计文档
-- `21-backlog.md` - 产品Backlog
+#### 1x - 产品设计和MVP
+- `10-mvp-design.md` - MVP设计文档
+- `11-backlog.md` - 产品Backlog
 
-#### 3x - 技术架构和实现
-- `30-architecture.md` - 系统架构文档
+#### 2x - 技术架构和实现
+- `20-architecture.md` - 系统架构文档
 
-#### 4x - 商业化和策略
-- `40-business-strategy.md` - 商业化策略文档
+#### 3x - 商业化和策略
+- `30-business-strategy.md` - 商业化策略文档
 
 ## 📚 文档阅读顺序建议
 
 ### 新读者推荐顺序
 1. `index.html` - 了解项目概览
-2. `10-opportunity-assessment.md` - 理解市场机会
-3. `20-mvp-design.md` - 了解产品设计
-4. `21-backlog.md` - 查看开发计划
-5. `30-architecture.md` - 了解技术架构
-6. `40-business-strategy.md` - 了解商业化策略
+2. `00-opportunity-assessment.md` - 理解市场机会
+3. `10-mvp-design.md` - 了解产品设计
+4. `11-backlog.md` - 查看开发计划
+5. `20-architecture.md` - 了解技术架构
+6. `30-business-strategy.md` - 了解商业化策略
 
 ### 开发团队推荐顺序
-1. `20-mvp-design.md` - 产品设计
-2. `21-backlog.md` - 开发任务
-3. `30-architecture.md` - 技术实现
-4. `10-opportunity-assessment.md` - 市场背景
-5. `40-business-strategy.md` - 商业目标
+1. `10-mvp-design.md` - 产品设计
+2. `11-backlog.md` - 开发任务
+3. `20-architecture.md` - 技术实现
+4. `00-opportunity-assessment.md` - 市场背景
+5. `30-business-strategy.md` - 商业目标
 
 ## 🔄 文档更新规则
 
