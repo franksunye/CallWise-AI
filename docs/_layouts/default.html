@@ -174,36 +174,7 @@
         .mermaid {
             text-align: center;
             margin: 2rem 0;
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 1rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        /* 确保Mermaid图表内的文字可见 */
-        .mermaid svg {
-            background: #ffffff !important;
-        }
-
-        .mermaid .node rect,
-        .mermaid .node circle,
-        .mermaid .node ellipse,
-        .mermaid .node polygon {
-            fill: #ffffff !important;
-            stroke: #667eea !important;
-            stroke-width: 2px !important;
-        }
-
-        .mermaid .edgeLabel {
-            background-color: #ffffff !important;
-            color: #1a202c !important;
-            font-weight: 500 !important;
-        }
-
-        .mermaid .nodeLabel {
-            color: #1a202c !important;
-            font-weight: 500 !important;
+            background: transparent;
         }
         
         .footer {
@@ -271,48 +242,13 @@
         document.addEventListener('DOMContentLoaded', function() {
             mermaid.initialize({
                 startOnLoad: true,
-                theme: 'base',
+                theme: 'default',
                 themeVariables: {
-                    // 基础颜色
-                    background: '#ffffff',
-                    primaryColor: '#e3f2fd',
-                    primaryTextColor: '#1a202c',
-                    primaryBorderColor: '#667eea',
-
-                    // 线条和文字
-                    lineColor: '#4a5568',
-                    edgeLabelBackground: '#ffffff',
-
-                    // 节点背景
-                    mainBkg: '#ffffff',
-                    secondBkg: '#f7fafc',
-                    tertiaryColor: '#f0f4f8',
-
-                    // 文字颜色
-                    textColor: '#1a202c',
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                    fontSize: '14px',
-
-                    // 特殊元素
-                    cScale0: '#667eea',
-                    cScale1: '#764ba2',
-                    cScale2: '#f093fb'
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
                 },
                 flowchart: {
                     useMaxWidth: true,
-                    htmlLabels: true,
-                    curve: 'basis'
-                },
-                sequence: {
-                    diagramMarginX: 50,
-                    diagramMarginY: 10,
-                    actorMargin: 50,
-                    width: 150,
-                    height: 65,
-                    boxMargin: 10,
-                    boxTextMargin: 5,
-                    noteMargin: 10,
-                    messageMargin: 35
+                    htmlLabels: true
                 }
             });
 
